@@ -1,4 +1,5 @@
 #import "SCATitleScene.h"
+#import "SCAGamePlayScene.h"
 
 @implementation SCATitleScene
 
@@ -12,6 +13,12 @@
     }
     
     return self;
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    SCAGamePlayScene *gamePlayScene = [SCAGamePlayScene sceneWithSize:self.frame.size];
+    SKTransition *transition = [SKTransition flipVerticalWithDuration:1.0];
+    [self.view presentScene:gamePlayScene transition:transition];
 }
 
 @end
