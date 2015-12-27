@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A68341321C30857B00CB5C7F /* SCATitleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A68341311C30857B00CB5C7F /* SCATitleScene.m */; };
 		A68341351C30A23900CB5C7F /* SCAGamePlayScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A68341341C30A23900CB5C7F /* SCAGamePlayScene.m */; };
+		A68341371C30A5DB00CB5C7F /* Sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A68341361C30A5DB00CB5C7F /* Sprites.atlas */; };
 		A6932F821C2F4DCA00A9D7EA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6932F811C2F4DCA00A9D7EA /* main.m */; };
 		A6932F851C2F4DCA00A9D7EA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6932F841C2F4DCA00A9D7EA /* AppDelegate.m */; };
 		A6932F8D1C2F4DCA00A9D7EA /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6932F8C1C2F4DCA00A9D7EA /* GameViewController.m */; };
@@ -41,6 +42,7 @@
 		A68341311C30857B00CB5C7F /* SCATitleScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCATitleScene.m; sourceTree = "<group>"; };
 		A68341331C30A23900CB5C7F /* SCAGamePlayScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAGamePlayScene.h; sourceTree = "<group>"; };
 		A68341341C30A23900CB5C7F /* SCAGamePlayScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAGamePlayScene.m; sourceTree = "<group>"; };
+		A68341361C30A5DB00CB5C7F /* Sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Sprites.atlas; sourceTree = "<group>"; };
 		A6932F7D1C2F4DCA00A9D7EA /* SpaceCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6932F811C2F4DCA00A9D7EA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A6932F831C2F4DCA00A9D7EA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				A68341331C30A23900CB5C7F /* SCAGamePlayScene.h */,
 				A68341341C30A23900CB5C7F /* SCAGamePlayScene.m */,
 				A6932F911C2F4DCB00A9D7EA /* Assets.xcassets */,
+				A68341361C30A5DB00CB5C7F /* Sprites.atlas */,
 				A6932F801C2F4DCA00A9D7EA /* Supporting Files */,
 			);
 			path = SpaceCat;
@@ -259,6 +262,7 @@
 			files = (
 				A6932F951C2F4DCB00A9D7EA /* LaunchScreen.storyboard in Resources */,
 				A6932F921C2F4DCB00A9D7EA /* Assets.xcassets in Resources */,
+				A68341371C30A5DB00CB5C7F /* Sprites.atlas in Resources */,
 				A6932F901C2F4DCA00A9D7EA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
