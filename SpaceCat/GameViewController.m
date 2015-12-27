@@ -1,11 +1,11 @@
 #import "GameViewController.h"
-#import "GameScene.h"
+#import "SCATitleScene.h"
 
 @implementation GameViewController
 
-- (void)viewDidLoad
+- (void)viewDidLayoutSubviews
 {
-    [super viewDidLoad];
+    [super viewDidLayoutSubviews];
 
     // Configure the view.
     SKView * skView = (SKView *)self.view;
@@ -15,7 +15,7 @@
     skView.ignoresSiblingOrder = YES;
     
     // Create and configure the scene.
-    GameScene *scene = [GameScene nodeWithFileNamed:@"GameScene"];
+    SKScene *scene = [SCATitleScene sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
@@ -24,7 +24,7 @@
 
 - (BOOL)shouldAutorotate
 {
-    return YES;
+    return NO;
 }
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations
