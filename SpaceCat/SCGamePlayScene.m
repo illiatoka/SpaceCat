@@ -4,6 +4,9 @@
 
 @implementation SCGamePlayScene
 
+#pragma mark -
+#pragma mark Initializations and Deallocations
+
 - (instancetype)initWithSize:(CGSize)size {
     self = [super initWithSize:size];
     
@@ -20,6 +23,14 @@
     }
     
     return self;
+}
+
+#pragma mark -
+#pragma mark Private Implementations
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    SCCatNode *spaceCat = (SCCatNode *)[self childNodeWithName:@"SpaceCat"];
+    [spaceCat performTap];
 }
 
 @end

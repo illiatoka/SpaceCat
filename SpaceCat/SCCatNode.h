@@ -4,4 +4,6 @@
 
 + (instancetype)catAtPosition:(CGPoint)position;
 
+- (void)performTap;
+
 @end
