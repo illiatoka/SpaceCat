@@ -1,6 +1,8 @@
-#import "SCAGamePlayScene.h"
+#import "SCGamePlayScene.h"
+#import "SCMachineNode.h"
+#import "SCCatNode.h"
 
-@implementation SCAGamePlayScene
+@implementation SCGamePlayScene
 
 - (instancetype)initWithSize:(CGSize)size {
     self = [super initWithSize:size];
@@ -10,10 +12,11 @@
         background.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
         [self addChild:background];
         
-        SKSpriteNode *machine = [SKSpriteNode spriteNodeWithImageNamed:@"machine_1"];
-        machine.position = CGPointMake(CGRectGetMidX(self.frame), 12);
-        machine.anchorPoint = CGPointMake(0.5, 0);
+        SCMachineNode *machine = [SCMachineNode machineAtPosition:CGPointMake(CGRectGetMidX(self.frame), 12)];
         [self addChild:machine];
+        
+        SCCatNode *spaceCat = [SCCatNode catAtPosition:CGPointMake(machine.position.x, machine.position.y -2)];
+        [self addChild:spaceCat];
     }
     
     return self;

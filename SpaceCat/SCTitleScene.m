@@ -1,7 +1,10 @@
-#import "SCATitleScene.h"
-#import "SCAGamePlayScene.h"
+#import "SCTitleScene.h"
+#import "SCGamePlayScene.h"
 
-@implementation SCATitleScene
+@implementation SCTitleScene
+
+#pragma mark -
+#pragma mark Initializations and Deallocations
 
 - (instancetype)initWithSize:(CGSize)size {
     self = [super initWithSize:size];
@@ -15,8 +18,11 @@
     return self;
 }
 
+#pragma mark -
+#pragma mark Private Implementations
+
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    SCAGamePlayScene *gamePlayScene = [SCAGamePlayScene sceneWithSize:self.frame.size];
+    SCGamePlayScene *gamePlayScene = [SCGamePlayScene sceneWithSize:self.frame.size];
     SKTransition *transition = [SKTransition flipVerticalWithDuration:1.0];
     [self.view presentScene:gamePlayScene transition:transition];
 }

@@ -1,34 +1,30 @@
 #import "GameViewController.h"
-#import "SCATitleScene.h"
+#import "SCTitleScene.h"
 
 @implementation GameViewController
 
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
+- (void)viewDidLoad {
+    [super viewDidLoad];
 
     // Configure the view.
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
-    /* Sprite Kit applies additional optimizations to improve rendering performance */
-    skView.ignoresSiblingOrder = YES;
+    skView.ignoresSiblingOrder = NO;
     
     // Create and configure the scene.
-    SKScene *scene = [SCATitleScene sceneWithSize:skView.bounds.size];
+    SKScene *scene = [SCTitleScene sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
     [skView presentScene:scene];
 }
 
-- (BOOL)shouldAutorotate
-{
-    return NO;
+- (BOOL)shouldAutorotate {
+    return YES;
 }
 
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations
-{
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         return UIInterfaceOrientationMaskAllButUpsideDown;
     } else {
@@ -36,10 +32,8 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
 }
 
 - (BOOL)prefersStatusBarHidden {

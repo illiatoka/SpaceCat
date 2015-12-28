@@ -1,5 +1,5 @@
 #import <SpriteKit/SpriteKit.h>
 
-@interface SCATitleScene : SKScene
+@interface SCGamePlayScene : SKScene
 
 @end
