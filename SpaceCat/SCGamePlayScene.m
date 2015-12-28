@@ -46,8 +46,12 @@
     SCCatNode *spaceCat = (SCCatNode *)[self childNodeWithName:@"SpaceCat"];
     [spaceCat performTap];
     
-    SCProjectileNode *projectile = [SCProjectileNode projectileAtPosition:position];
+    SCMachineNode *machine = (SCMachineNode *)[self childNodeWithName:@"Machine"];
+    CGPoint machinePosition = CGPointMake(machine.position.x, machine.position.y + machine.frame.size.height - 15);
+    
+    SCProjectileNode *projectile = [SCProjectileNode projectileAtPosition:machinePosition];
     [self addChild:projectile];
+    [projectile moveTowardsPosition:position];
 }
 
 @end

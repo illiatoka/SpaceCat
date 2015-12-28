@@ -13,6 +13,7 @@
 		A60D8F671C31643F00B289C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A60D8F651C31643F00B289C6 /* Main.storyboard */; };
 		A60D8F691C31643F00B289C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A60D8F681C31643F00B289C6 /* Assets.xcassets */; };
 		A60D8F6C1C31643F00B289C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A60D8F6A1C31643F00B289C6 /* LaunchScreen.storyboard */; };
+		A66DC0631C31F81300234E1B /* SCUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A66DC0621C31F81300234E1B /* SCUtil.m */; };
 		A6CE3B7F1C31D27E00B2AA08 /* SCGamePlayScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A6CE3B7E1C31D27E00B2AA08 /* SCGamePlayScene.m */; };
 		A6CE3B821C31D2A700B2AA08 /* SCTitleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A6CE3B811C31D2A700B2AA08 /* SCTitleScene.m */; };
 		A6CE3B851C31D2F600B2AA08 /* SCMachineNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A6CE3B841C31D2F600B2AA08 /* SCMachineNode.m */; };
@@ -32,6 +33,8 @@
 		A60D8F681C31643F00B289C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A60D8F6B1C31643F00B289C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A60D8F6D1C31643F00B289C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A66DC0611C31F81300234E1B /* SCUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCUtil.h; sourceTree = "<group>"; };
+		A66DC0621C31F81300234E1B /* SCUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCUtil.m; sourceTree = "<group>"; };
 		A6CE3B7D1C31D27E00B2AA08 /* SCGamePlayScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCGamePlayScene.h; sourceTree = "<group>"; };
 		A6CE3B7E1C31D27E00B2AA08 /* SCGamePlayScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCGamePlayScene.m; sourceTree = "<group>"; };
 		A6CE3B801C31D2A700B2AA08 /* SCTitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCTitleScene.h; sourceTree = "<group>"; };
@@ -85,6 +88,8 @@
 				A6CE3B811C31D2A700B2AA08 /* SCTitleScene.m */,
 				A6CE3B7D1C31D27E00B2AA08 /* SCGamePlayScene.h */,
 				A6CE3B7E1C31D27E00B2AA08 /* SCGamePlayScene.m */,
+				A66DC0611C31F81300234E1B /* SCUtil.h */,
+				A66DC0621C31F81300234E1B /* SCUtil.m */,
 				A60D8F681C31643F00B289C6 /* Assets.xcassets */,
 				A6CE3B891C31D50D00B2AA08 /* Sprites.atlas */,
 				A60D8F571C31643F00B289C6 /* Supporting Files */,
@@ -182,6 +187,7 @@
 			files = (
 				A6CE3B7F1C31D27E00B2AA08 /* SCGamePlayScene.m in Sources */,
 				A6CE3B821C31D2A700B2AA08 /* SCTitleScene.m in Sources */,
+				A66DC0631C31F81300234E1B /* SCUtil.m in Sources */,
 				A6CE3B8D1C31E76100B2AA08 /* SCProjectileNode.m in Sources */,
 				A60D8F641C31643F00B289C6 /* GameViewController.m in Sources */,
 				A60D8F5C1C31643F00B289C6 /* AppDelegate.m in Sources */,

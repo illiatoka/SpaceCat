@@ -4,4 +4,6 @@
 
 + (instancetype)projectileAtPosition:(CGPoint)position;
 
+- (void)moveTowardsPosition:(CGPoint)position;
+
 @end
