@@ -1,6 +1,13 @@
 #import "SCGamePlayScene.h"
 #import "SCMachineNode.h"
 #import "SCCatNode.h"
+#import "SCProjectileNode.h"
+
+@interface SCGamePlayScene ()
+
+- (void)shootProjectileTowardsPosition:(CGPoint)position;
+
+@end
 
 @implementation SCGamePlayScene
 
@@ -29,8 +36,18 @@
 #pragma mark Private Implementations
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    for (UITouch *touch in touches) {
+        CGPoint position = [touch locationInNode:self];
+        [self shootProjectileTowardsPosition:position];
+    }
+}
+
+- (void)shootProjectileTowardsPosition:(CGPoint)position {
     SCCatNode *spaceCat = (SCCatNode *)[self childNodeWithName:@"SpaceCat"];
     [spaceCat performTap];
+    
+    SCProjectileNode *projectile = [SCProjectileNode projectileAtPosition:position];
+    [self addChild:projectile];
 }
 
 @end

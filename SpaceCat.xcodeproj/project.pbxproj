@@ -18,6 +18,7 @@
 		A6CE3B851C31D2F600B2AA08 /* SCMachineNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A6CE3B841C31D2F600B2AA08 /* SCMachineNode.m */; };
 		A6CE3B881C31D32500B2AA08 /* SCCatNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A6CE3B871C31D32500B2AA08 /* SCCatNode.m */; };
 		A6CE3B8A1C31D50D00B2AA08 /* Sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A6CE3B891C31D50D00B2AA08 /* Sprites.atlas */; };
+		A6CE3B8D1C31E76100B2AA08 /* SCProjectileNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A6CE3B8C1C31E76100B2AA08 /* SCProjectileNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,8 @@
 		A6CE3B861C31D32500B2AA08 /* SCCatNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCCatNode.h; sourceTree = "<group>"; };
 		A6CE3B871C31D32500B2AA08 /* SCCatNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCCatNode.m; sourceTree = "<group>"; };
 		A6CE3B891C31D50D00B2AA08 /* Sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Sprites.atlas; sourceTree = "<group>"; };
+		A6CE3B8B1C31E76100B2AA08 /* SCProjectileNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCProjectileNode.h; sourceTree = "<group>"; };
+		A6CE3B8C1C31E76100B2AA08 /* SCProjectileNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCProjectileNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +79,8 @@
 				A6CE3B871C31D32500B2AA08 /* SCCatNode.m */,
 				A6CE3B831C31D2F600B2AA08 /* SCMachineNode.h */,
 				A6CE3B841C31D2F600B2AA08 /* SCMachineNode.m */,
+				A6CE3B8B1C31E76100B2AA08 /* SCProjectileNode.h */,
+				A6CE3B8C1C31E76100B2AA08 /* SCProjectileNode.m */,
 				A6CE3B801C31D2A700B2AA08 /* SCTitleScene.h */,
 				A6CE3B811C31D2A700B2AA08 /* SCTitleScene.m */,
 				A6CE3B7D1C31D27E00B2AA08 /* SCGamePlayScene.h */,
@@ -177,6 +182,7 @@
 			files = (
 				A6CE3B7F1C31D27E00B2AA08 /* SCGamePlayScene.m in Sources */,
 				A6CE3B821C31D2A700B2AA08 /* SCTitleScene.m in Sources */,
+				A6CE3B8D1C31E76100B2AA08 /* SCProjectileNode.m in Sources */,
 				A60D8F641C31643F00B289C6 /* GameViewController.m in Sources */,
 				A60D8F5C1C31643F00B289C6 /* AppDelegate.m in Sources */,
 				A60D8F591C31643F00B289C6 /* main.m in Sources */,

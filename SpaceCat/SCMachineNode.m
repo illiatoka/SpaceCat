@@ -13,11 +13,10 @@
     NSArray *textures = @[[SKTexture textureWithImageNamed:@"machine_1"],
                           [SKTexture textureWithImageNamed:@"machine_2"]];
     
-    SKAction *machineAnimation = [SKAction animateWithTextures:textures timePerFrame:0.1];
+    SKAction *animation = [SKAction animateWithTextures:textures timePerFrame:0.1];
+    SKAction *repeatAnimation = [SKAction repeatActionForever:animation];
     
-    SKAction *machineRepeat = [SKAction repeatActionForever:machineAnimation];
-    
-    [machine runAction:machineRepeat];
+    [machine runAction:repeatAnimation];
     
     return machine;
 }
