@@ -57,6 +57,16 @@
     
     SKAction *moveProjectile = [SKAction moveTo:pointOffscreen duration:time];
     [self runAction:moveProjectile];
+    
+    // fade out the projectiles when they are reach 75% of the distance
+    float waitToFade = time * 0.75;
+    float faidTime = time - waitToFade;
+    
+    NSArray *sequence = @[[SKAction waitForDuration:waitToFade],
+                          [SKAction fadeOutWithDuration:faidTime],
+                          [SKAction removeFromParent]];
+    
+    [self runAction:[SKAction sequence:sequence]];
 }
 
 #pragma mark -
