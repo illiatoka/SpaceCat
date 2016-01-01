@@ -2,10 +2,13 @@
 #import "SCMachineNode.h"
 #import "SCCatNode.h"
 #import "SCProjectileNode.h"
+#import "SCDogNode.h"
 
 @interface SCGamePlayScene ()
 
 - (void)shootProjectileTowardsPosition:(CGPoint)position;
+
+- (void)addSpaceDog;
 
 @end
 
@@ -27,6 +30,8 @@
         
         SCCatNode *spaceCat = [SCCatNode catAtPosition:CGPointMake(machine.position.x, machine.position.y -2)];
         [self addChild:spaceCat];
+        
+        [self addSpaceDog];
     }
     
     return self;
@@ -52,6 +57,16 @@
     SCProjectileNode *projectile = [SCProjectileNode projectileAtPosition:machinePosition];
     [self addChild:projectile];
     [projectile moveTowardsPosition:position];
+}
+
+- (void)addSpaceDog {
+    SCDogNode *spaceDogA = [SCDogNode spaceDogOfType:SCSpaceDogTypeA];
+    spaceDogA.position = CGPointMake(100, 300);
+    [self addChild:spaceDogA];
+    
+    SCDogNode *spaceDogB = [SCDogNode spaceDogOfType:SCSpaceDogTypeB];
+    spaceDogB.position = CGPointMake(200, 300);
+    [self addChild:spaceDogB];
 }
 
 @end
