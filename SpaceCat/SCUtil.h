@@ -11,4 +11,6 @@ typedef NS_OPTIONS(uint32_t, SCCollisionCategory) {
 
 @interface SCUtil : NSObject
 
++ (NSInteger)randomWithMin:(NSInteger)min max:(NSInteger)max;
+
 @end
