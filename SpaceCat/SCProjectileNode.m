@@ -5,6 +5,8 @@
 
 - (void)setupAnimation;
 
+- (void)setupPhysicsBody;
+
 @end
 
 @implementation SCProjectileNode
@@ -17,6 +19,7 @@
     projectile.position = position;
     projectile.name = @"Projectile";
     
+    [projectile setupPhysicsBody];
     [projectile setupAnimation];
     
     return projectile;
@@ -81,6 +84,11 @@
     SKAction *repeatAnimation = [SKAction repeatActionForever:animation];
     
     [self runAction:repeatAnimation];
+}
+
+- (void)setupPhysicsBody {
+    self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.frame.size];
+    self.physicsBody.affectedByGravity = NO;
 }
 
 @end

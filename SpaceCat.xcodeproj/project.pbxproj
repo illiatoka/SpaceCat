@@ -14,6 +14,7 @@
 		A60D8F691C31643F00B289C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A60D8F681C31643F00B289C6 /* Assets.xcassets */; };
 		A60D8F6C1C31643F00B289C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A60D8F6A1C31643F00B289C6 /* LaunchScreen.storyboard */; };
 		A618A7331C33DE3F005D5452 /* SCDogNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A618A7321C33DE3F005D5452 /* SCDogNode.m */; };
+		A618A7371C371692005D5452 /* SCGroundNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A618A7361C371692005D5452 /* SCGroundNode.m */; };
 		A66DC0631C31F81300234E1B /* SCUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A66DC0621C31F81300234E1B /* SCUtil.m */; };
 		A6CE3B7F1C31D27E00B2AA08 /* SCGamePlayScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A6CE3B7E1C31D27E00B2AA08 /* SCGamePlayScene.m */; };
 		A6CE3B821C31D2A700B2AA08 /* SCTitleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A6CE3B811C31D2A700B2AA08 /* SCTitleScene.m */; };
@@ -36,6 +37,8 @@
 		A60D8F6D1C31643F00B289C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A618A7311C33DE3F005D5452 /* SCDogNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDogNode.h; sourceTree = "<group>"; };
 		A618A7321C33DE3F005D5452 /* SCDogNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDogNode.m; sourceTree = "<group>"; };
+		A618A7351C371692005D5452 /* SCGroundNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCGroundNode.h; sourceTree = "<group>"; };
+		A618A7361C371692005D5452 /* SCGroundNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCGroundNode.m; sourceTree = "<group>"; };
 		A66DC0611C31F81300234E1B /* SCUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCUtil.h; sourceTree = "<group>"; };
 		A66DC0621C31F81300234E1B /* SCUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCUtil.m; sourceTree = "<group>"; };
 		A6CE3B7D1C31D27E00B2AA08 /* SCGamePlayScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCGamePlayScene.h; sourceTree = "<group>"; };
@@ -89,6 +92,8 @@
 				A6CE3B841C31D2F600B2AA08 /* SCMachineNode.m */,
 				A6CE3B8B1C31E76100B2AA08 /* SCProjectileNode.h */,
 				A6CE3B8C1C31E76100B2AA08 /* SCProjectileNode.m */,
+				A618A7351C371692005D5452 /* SCGroundNode.h */,
+				A618A7361C371692005D5452 /* SCGroundNode.m */,
 				A6CE3B801C31D2A700B2AA08 /* SCTitleScene.h */,
 				A6CE3B811C31D2A700B2AA08 /* SCTitleScene.m */,
 				A6CE3B7D1C31D27E00B2AA08 /* SCGamePlayScene.h */,
@@ -199,6 +204,7 @@
 				A618A7331C33DE3F005D5452 /* SCDogNode.m in Sources */,
 				A60D8F591C31643F00B289C6 /* main.m in Sources */,
 				A6CE3B851C31D2F600B2AA08 /* SCMachineNode.m in Sources */,
+				A618A7371C371692005D5452 /* SCGroundNode.m in Sources */,
 				A6CE3B881C31D32500B2AA08 /* SCCatNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,5 +1,11 @@
 #import "SCDogNode.h"
 
+@interface SCDogNode ()
+
+- (void)setupPhysicsBody;
+
+@end
+
 @implementation SCDogNode
 
 #pragma mark -
@@ -25,7 +31,18 @@
     SKAction *animation = [SKAction animateWithTextures:textures timePerFrame:0.1];
     [spaceDog runAction:[SKAction repeatActionForever:animation]];
     
+    [spaceDog setupPhysicsBody];
+    
     return spaceDog;
+}
+
+#pragma mark -
+#pragma mark Private Implementations
+
+- (void)setupPhysicsBody {
+    self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.frame.size];
+    self.physicsBody.affectedByGravity = NO;
+    self.physicsBody.velocity = CGVectorMake(0, -50);
 }
 
 @end

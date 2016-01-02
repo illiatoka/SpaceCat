@@ -3,6 +3,7 @@
 #import "SCCatNode.h"
 #import "SCProjectileNode.h"
 #import "SCDogNode.h"
+#import "SCGroundNode.h"
 
 @interface SCGamePlayScene ()
 
@@ -21,9 +22,13 @@
     self = [super initWithSize:size];
     
     if (self) {
+        SCGroundNode *ground = [SCGroundNode groundWithSize:CGSizeMake(self.frame.size.width, 22)];
+        [self addChild:ground];
+        
         SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"gamePlayBackground"];
         background.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
         [self addChild:background];
+        
         
         SCMachineNode *machine = [SCMachineNode machineAtPosition:CGPointMake(CGRectGetMidX(self.frame), 12)];
         [self addChild:machine];
@@ -32,6 +37,8 @@
         [self addChild:spaceCat];
         
         [self addSpaceDog];
+        
+        self.physicsWorld.gravity = CGVectorMake(0, -9.8);
     }
     
     return self;
