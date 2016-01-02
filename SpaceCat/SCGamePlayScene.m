@@ -73,8 +73,10 @@
 
 - (void)addSpaceDog {
     NSUInteger randomSpaceDog = [SCUtil randomWithMin:0 max:2];
+    float dy = [SCUtil randomWithMin:kSCSpaceDogMinSpeed max:kSCSpaceDogMaxSpeed];
     
     SCDogNode *spaceDog = [SCDogNode spaceDogOfType:randomSpaceDog];
+    spaceDog.physicsBody.velocity = CGVectorMake(0, dy);
     
     float y = self.frame.size.height + spaceDog.size.height;
     float x = [SCUtil randomWithMin:spaceDog.size.width + 10

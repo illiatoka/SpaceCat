@@ -1,6 +1,8 @@
 #import <Foundation/Foundation.h>
 
 static const uint kSCProjectileSpeed = 400;
+static const int kSCSpaceDogMinSpeed = -150;
+static const int kSCSpaceDogMaxSpeed = -50;
 
 typedef NS_OPTIONS(uint32_t, SCCollisionCategory) {
     SCCollisionCategoryEnemy        = 1 << 0,
