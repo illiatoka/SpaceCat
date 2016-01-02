@@ -7,6 +7,8 @@
 #import "SCUtil.h"
 
 @interface SCGamePlayScene ()
+@property (nonatomic, readwrite) NSTimeInterval lastUpdateTimeInterval;
+@property (nonatomic, readwrite) NSTimeInterval timeSinceEnemyAdded;
 
 - (void)shootProjectileTowardsPosition:(CGPoint)position;
 - (void)addSpaceDog;
@@ -23,6 +25,9 @@
     self = [super initWithSize:size];
     
     if (self) {
+        self.lastUpdateTimeInterval = 0;
+        self.timeSinceEnemyAdded = 0;
+        
         self.physicsWorld.gravity = CGVectorMake(0, -9.8);
         self.physicsWorld.contactDelegate = self;
         
@@ -39,8 +44,6 @@
         
         SCCatNode *spaceCat = [SCCatNode catAtPosition:CGPointMake(machine.position.x, machine.position.y -2)];
         [self addChild:spaceCat];
-        
-        [self addSpaceDog];
     }
     
     return self;
@@ -69,13 +72,17 @@
 }
 
 - (void)addSpaceDog {
-    SCDogNode *spaceDogA = [SCDogNode spaceDogOfType:SCSpaceDogTypeA];
-    spaceDogA.position = CGPointMake(100, 300);
-    [self addChild:spaceDogA];
+    NSUInteger randomSpaceDog = [SCUtil randomWithMin:0 max:2];
     
-    SCDogNode *spaceDogB = [SCDogNode spaceDogOfType:SCSpaceDogTypeB];
-    spaceDogB.position = CGPointMake(200, 300);
-    [self addChild:spaceDogB];
+    SCDogNode *spaceDog = [SCDogNode spaceDogOfType:randomSpaceDog];
+    
+    float y = self.frame.size.height + spaceDog.size.height;
+    float x = [SCUtil randomWithMin:spaceDog.size.width + 10
+                                max:self.frame.size.width - spaceDog.size.width - 10];
+    
+    spaceDog.position = CGPointMake(x, y);
+    [self addChild:spaceDog];
+    
 }
 
 - (void)debrisAtPosition:(CGPoint)position {
@@ -101,6 +108,22 @@
             [debris removeFromParent];
         }];
     }
+}
+
+#pragma mark -
+#pragma mark RunLoop hooks
+
+- (void)update:(NSTimeInterval)currentTime {
+    if (self.lastUpdateTimeInterval) {
+        self.timeSinceEnemyAdded += currentTime - self.lastUpdateTimeInterval;
+    }
+    
+    if (1.5 < self.timeSinceEnemyAdded) {
+        [self addSpaceDog];
+        self.timeSinceEnemyAdded = 0;
+    }
+    
+    self.lastUpdateTimeInterval = currentTime;
 }
 
 #pragma mark -
