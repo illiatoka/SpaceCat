@@ -9,6 +9,9 @@
 @interface SCGamePlayScene ()
 @property (nonatomic, readwrite) NSTimeInterval lastUpdateTimeInterval;
 @property (nonatomic, readwrite) NSTimeInterval timeSinceEnemyAdded;
+@property (nonatomic, readwrite) NSTimeInterval totalGameTime;
+@property (nonatomic, readwrite) NSInteger     minSpeed;
+@property (nonatomic, readwrite) NSTimeInterval addEnemyTimeInterval;
 
 - (void)shootProjectileTowardsPosition:(CGPoint)position;
 - (void)addSpaceDog;
@@ -27,6 +30,9 @@
     if (self) {
         self.lastUpdateTimeInterval = 0;
         self.timeSinceEnemyAdded = 0;
+        self.addEnemyTimeInterval = 1.5;
+        self.totalGameTime = 0;
+        self.minSpeed = kSCSpaceDogMinSpeed;
         
         self.physicsWorld.gravity = CGVectorMake(0, -9.8);
         self.physicsWorld.contactDelegate = self;
@@ -118,14 +124,32 @@
 - (void)update:(NSTimeInterval)currentTime {
     if (self.lastUpdateTimeInterval) {
         self.timeSinceEnemyAdded += currentTime - self.lastUpdateTimeInterval;
+        self.totalGameTime += currentTime - self.lastUpdateTimeInterval;
     }
     
-    if (1.5 < self.timeSinceEnemyAdded) {
+    if (self.addEnemyTimeInterval < self.timeSinceEnemyAdded) {
         [self addSpaceDog];
         self.timeSinceEnemyAdded = 0;
     }
     
     self.lastUpdateTimeInterval = currentTime;
+    
+    if (480 < self.totalGameTime) {
+        // 480 / 60 = 8 minutes
+        self.addEnemyTimeInterval = 0.50;
+        self.minSpeed = -160;
+    } else if (240 < self.totalGameTime) {
+        // 240 // 60 = 4 minutes
+        self.addEnemyTimeInterval = 0.65;
+        self.minSpeed = -150;
+    } else if (120 < self.totalGameTime) {
+        // 120 // 60 = 2 minutes
+        self.addEnemyTimeInterval = 0.75;
+        self.minSpeed = -125;
+    } else if (30 < self.totalGameTime) {
+        self.addEnemyTimeInterval = 1.00;
+        self.minSpeed = -100;
+    }
 }
 
 #pragma mark -
