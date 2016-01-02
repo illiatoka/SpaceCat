@@ -1,4 +1,5 @@
 #import "SCGroundNode.h"
+#import "SCUtil.h"
 
 @interface SCGroundNode ()
 
@@ -12,7 +13,7 @@
 #pragma mark Class Methods
 
 + (instancetype)groundWithSize:(CGSize)size {
-    SCGroundNode *ground = [self spriteNodeWithColor:[SKColor greenColor] size:size];
+    SCGroundNode *ground = [self spriteNodeWithTexture:NULL size:size];
     
     ground.position = CGPointMake(size.width/2, size.height/2);
     ground.name = @"Ground";
@@ -29,6 +30,9 @@
     self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.frame.size];
     self.physicsBody.affectedByGravity = NO;
     self.physicsBody.dynamic = NO;
+    self.physicsBody.categoryBitMask = SCCollisionCategoryGround;
+    self.physicsBody.collisionBitMask = SCCollisionCategoryDebris;
+    self.physicsBody.contactTestBitMask = SCCollisionCategoryEnemy;
 }
 
 @end

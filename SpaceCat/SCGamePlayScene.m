@@ -4,6 +4,7 @@
 #import "SCProjectileNode.h"
 #import "SCDogNode.h"
 #import "SCGroundNode.h"
+#import "SCUtil.h"
 
 @interface SCGamePlayScene ()
 
@@ -23,6 +24,7 @@
     
     if (self) {
         self.physicsWorld.gravity = CGVectorMake(0, -9.8);
+        self.physicsWorld.contactDelegate = self;
         
         SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"gamePlayBackground"];
         background.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
@@ -74,6 +76,35 @@
     SCDogNode *spaceDogB = [SCDogNode spaceDogOfType:SCSpaceDogTypeB];
     spaceDogB.position = CGPointMake(200, 300);
     [self addChild:spaceDogB];
+}
+
+#pragma mark -
+#pragma SKPhysicsContactDelegate
+
+- (void)didBeginContact:(SKPhysicsContact *)contact {
+    SKPhysicsBody *firstBody, *secondBody;
+    
+    if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask) {
+        firstBody = contact.bodyA;
+        secondBody = contact.bodyB;
+    } else {
+        firstBody = contact.bodyB;
+        secondBody = contact.bodyA;
+    }
+    
+    if (SCCollisionCategoryEnemy == firstBody.categoryBitMask
+        && SCCollisionCategoryProjectile == secondBody.categoryBitMask) {
+        SCDogNode *spaceDog = (SCDogNode *)firstBody.node;
+        SCProjectileNode *projectile = (SCProjectileNode *)secondBody.node;
+        
+        [spaceDog removeFromParent];
+        [projectile removeFromParent];
+    } else if (SCCollisionCategoryEnemy == firstBody.categoryBitMask &&
+               SCCollisionCategoryGround == secondBody.categoryBitMask) {
+        SCDogNode *spaceDog = (SCDogNode *)firstBody.node;
+
+        [spaceDog removeFromParent];
+    }
 }
 
 @end

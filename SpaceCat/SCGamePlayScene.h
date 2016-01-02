@@ -1,5 +1,5 @@
 #import <SpriteKit/SpriteKit.h>
 
-@interface SCGamePlayScene : SKScene
+@interface SCGamePlayScene : SKScene <SKPhysicsContactDelegate>
 
 @end
