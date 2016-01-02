@@ -22,13 +22,15 @@
     self = [super initWithSize:size];
     
     if (self) {
-        SCGroundNode *ground = [SCGroundNode groundWithSize:CGSizeMake(self.frame.size.width, 22)];
-        [self addChild:ground];
+        self.physicsWorld.gravity = CGVectorMake(0, -9.8);
         
         SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"gamePlayBackground"];
         background.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
         [self addChild:background];
         
+        SCGroundNode *ground = [SCGroundNode groundWithSize:CGSizeMake(self.frame.size.width, 22)];
+        ground.zPosition = 0.1;
+        [self addChild:ground];
         
         SCMachineNode *machine = [SCMachineNode machineAtPosition:CGPointMake(CGRectGetMidX(self.frame), 12)];
         [self addChild:machine];
@@ -37,8 +39,6 @@
         [self addChild:spaceCat];
         
         [self addSpaceDog];
-        
-        self.physicsWorld.gravity = CGVectorMake(0, -9.8);
     }
     
     return self;
