@@ -1,7 +1,7 @@
 #import "SCCatNode.h"
 
 @interface SCCatNode ()
-@property (nonatomic, strong, readwrite) SKAction *tapAction;
+@property (nonatomic, strong, readwrite)    SKAction    *tapAction;
 
 @end
 

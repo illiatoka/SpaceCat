@@ -2,6 +2,7 @@
 #import "SCUtil.h"
 
 @interface SCDogNode ()
+@property (nonatomic, readwrite) SCSpaceDogType type;
 
 - (void)setupPhysicsBody;
 
@@ -19,14 +20,14 @@
     if (SCSpaceDogTypeA == type) {
         spaceDog = [self spriteNodeWithImageNamed:@"spacedog_A_1"];
         textures = @[[SKTexture textureWithImageNamed:@"spacedog_A_1"],
-                     [SKTexture textureWithImageNamed:@"spacedog_A_2"],
-                     [SKTexture textureWithImageNamed:@"spacedog_A_3"]];
+                     [SKTexture textureWithImageNamed:@"spacedog_A_2"]];
+        spaceDog.type = SCSpaceDogTypeA;
     } else if (SCSpaceDogTypeB == type) {
         spaceDog = [self spriteNodeWithImageNamed:@"spacedog_B_1"];
         textures = @[[SKTexture textureWithImageNamed:@"spacedog_B_1"],
                      [SKTexture textureWithImageNamed:@"spacedog_B_2"],
-                     [SKTexture textureWithImageNamed:@"spacedog_B_3"],
-                     [SKTexture textureWithImageNamed:@"spacedog_B_4"]];
+                     [SKTexture textureWithImageNamed:@"spacedog_B_3"]];
+        spaceDog.type = SCSpaceDogTypeB;
     }
     
     float scale = [SCUtil randomWithMin:85 max:100] / 100.0f;

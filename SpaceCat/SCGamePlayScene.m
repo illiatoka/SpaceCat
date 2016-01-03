@@ -1,3 +1,5 @@
+#import <AVFoundation/AVFoundation.h>
+
 #import "SCGamePlayScene.h"
 #import "SCMachineNode.h"
 #import "SCCatNode.h"
@@ -7,12 +9,19 @@
 #import "SCUtil.h"
 
 @interface SCGamePlayScene ()
-@property (nonatomic, readwrite) NSTimeInterval lastUpdateTimeInterval;
-@property (nonatomic, readwrite) NSTimeInterval timeSinceEnemyAdded;
-@property (nonatomic, readwrite) NSTimeInterval totalGameTime;
-@property (nonatomic, readwrite) NSInteger     minSpeed;
-@property (nonatomic, readwrite) NSTimeInterval addEnemyTimeInterval;
+@property (nonatomic, readwrite)    NSTimeInterval  lastUpdateTimeInterval;
+@property (nonatomic, readwrite)    NSTimeInterval  timeSinceEnemyAdded;
+@property (nonatomic, readwrite)    NSTimeInterval  totalGameTime;
+@property (nonatomic, readwrite)    NSInteger       minSpeed;
+@property (nonatomic, readwrite)    NSTimeInterval  addEnemyTimeInterval;
 
+@property (nonatomic, strong, readwrite)    SKAction    *damageSFX;
+@property (nonatomic, strong, readwrite)    SKAction    *explodeSFX;
+@property (nonatomic, strong, readwrite)    SKAction    *laserSFX;
+
+@property (nonatomic, strong, readwrite)    AVAudioPlayer   *backgroundMusic;
+
+- (void)setupSounds;
 - (void)shootProjectileTowardsPosition:(CGPoint)position;
 - (void)addSpaceDog;
 - (void)debrisAtPosition:(CGPoint)position;
@@ -50,6 +59,8 @@
         
         SCCatNode *spaceCat = [SCCatNode catAtPosition:CGPointMake(machine.position.x, machine.position.y -2)];
         [self addChild:spaceCat];
+        
+        [self setupSounds];
     }
     
     return self;
@@ -58,11 +69,28 @@
 #pragma mark -
 #pragma mark Private Implementations
 
+- (void)didMoveToView:(SKView *)view {
+    [self.backgroundMusic play];
+}
+
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     for (UITouch *touch in touches) {
         CGPoint position = [touch locationInNode:self];
         [self shootProjectileTowardsPosition:position];
+        [self runAction:self.laserSFX];
     }
+}
+
+- (void)setupSounds {
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"Gameplay" withExtension:@"mp3"];
+    
+    self.backgroundMusic = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+    self.backgroundMusic.numberOfLoops = -1;
+    [self.backgroundMusic prepareToPlay];
+    
+    self.damageSFX = [SKAction playSoundFileNamed:@"Damage.caf" waitForCompletion:NO];
+    self.explodeSFX = [SKAction playSoundFileNamed:@"Explode.caf" waitForCompletion:NO];
+    self.laserSFX = [SKAction playSoundFileNamed:@"Laser.caf" waitForCompletion:NO];
 }
 
 - (void)shootProjectileTowardsPosition:(CGPoint)position {
@@ -153,7 +181,7 @@
 }
 
 #pragma mark -
-#pragma SKPhysicsContactDelegate
+#pragma mark SKPhysicsContactDelegate
 
 - (void)didBeginContact:(SKPhysicsContact *)contact {
     SKPhysicsBody *firstBody, *secondBody;
@@ -171,12 +199,14 @@
         SCDogNode *spaceDog = (SCDogNode *)firstBody.node;
         SCProjectileNode *projectile = (SCProjectileNode *)secondBody.node;
         
+        [self runAction:self.explodeSFX];
         [spaceDog removeFromParent];
         [projectile removeFromParent];
     } else if (SCCollisionCategoryEnemy == firstBody.categoryBitMask &&
                SCCollisionCategoryGround == secondBody.categoryBitMask) {
         SCDogNode *spaceDog = (SCDogNode *)firstBody.node;
-
+        
+        [self runAction:self.damageSFX];
         [spaceDog removeFromParent];
     }
     
