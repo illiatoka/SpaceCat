@@ -24,6 +24,8 @@
 		A618A7461C385FBB005D5452 /* StartScreen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A618A7431C385FBB005D5452 /* StartScreen.mp3 */; };
 		A618A7481C387EA5005D5452 /* SCDogNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A618A7471C387EA5005D5452 /* SCDogNode.m */; };
 		A66DC0631C31F81300234E1B /* SCUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A66DC0621C31F81300234E1B /* SCUtil.m */; };
+		A6B4BB181C4324D9007CC628 /* SCHudNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B4BB171C4324D9007CC628 /* SCHudNode.m */; };
+		A6B4BB1B1C433559007CC628 /* SCGameOverNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B4BB1A1C433559007CC628 /* SCGameOverNode.m */; };
 		A6CE3B7F1C31D27E00B2AA08 /* SCGamePlayScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A6CE3B7E1C31D27E00B2AA08 /* SCGamePlayScene.m */; };
 		A6CE3B821C31D2A700B2AA08 /* SCTitleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A6CE3B811C31D2A700B2AA08 /* SCTitleScene.m */; };
 		A6CE3B851C31D2F600B2AA08 /* SCMachineNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A6CE3B841C31D2F600B2AA08 /* SCMachineNode.m */; };
@@ -56,6 +58,10 @@
 		A618A7471C387EA5005D5452 /* SCDogNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDogNode.m; sourceTree = "<group>"; };
 		A66DC0611C31F81300234E1B /* SCUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCUtil.h; sourceTree = "<group>"; };
 		A66DC0621C31F81300234E1B /* SCUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCUtil.m; sourceTree = "<group>"; };
+		A6B4BB161C4324D9007CC628 /* SCHudNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCHudNode.h; sourceTree = "<group>"; };
+		A6B4BB171C4324D9007CC628 /* SCHudNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCHudNode.m; sourceTree = "<group>"; };
+		A6B4BB191C433559007CC628 /* SCGameOverNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCGameOverNode.h; sourceTree = "<group>"; };
+		A6B4BB1A1C433559007CC628 /* SCGameOverNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCGameOverNode.m; sourceTree = "<group>"; };
 		A6CE3B7D1C31D27E00B2AA08 /* SCGamePlayScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCGamePlayScene.h; sourceTree = "<group>"; };
 		A6CE3B7E1C31D27E00B2AA08 /* SCGamePlayScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCGamePlayScene.m; sourceTree = "<group>"; };
 		A6CE3B801C31D2A700B2AA08 /* SCTitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCTitleScene.h; sourceTree = "<group>"; };
@@ -99,26 +105,30 @@
 		A60D8F561C31643F00B289C6 /* SpaceCat */ = {
 			isa = PBXGroup;
 			children = (
-				A618A7381C3853D4005D5452 /* Sounds */,
-				A6CE3B861C31D32500B2AA08 /* SCCatNode.h */,
-				A6CE3B871C31D32500B2AA08 /* SCCatNode.m */,
-				A618A7311C33DE3F005D5452 /* SCDogNode.h */,
-				A618A7471C387EA5005D5452 /* SCDogNode.m */,
-				A6CE3B831C31D2F600B2AA08 /* SCMachineNode.h */,
-				A6CE3B841C31D2F600B2AA08 /* SCMachineNode.m */,
-				A6CE3B8B1C31E76100B2AA08 /* SCProjectileNode.h */,
-				A6CE3B8C1C31E76100B2AA08 /* SCProjectileNode.m */,
-				A618A7351C371692005D5452 /* SCGroundNode.h */,
-				A618A7361C371692005D5452 /* SCGroundNode.m */,
 				A6CE3B801C31D2A700B2AA08 /* SCTitleScene.h */,
 				A6CE3B811C31D2A700B2AA08 /* SCTitleScene.m */,
 				A6CE3B7D1C31D27E00B2AA08 /* SCGamePlayScene.h */,
 				A6CE3B7E1C31D27E00B2AA08 /* SCGamePlayScene.m */,
+				A6B4BB161C4324D9007CC628 /* SCHudNode.h */,
+				A6B4BB171C4324D9007CC628 /* SCHudNode.m */,
+				A618A7351C371692005D5452 /* SCGroundNode.h */,
+				A618A7361C371692005D5452 /* SCGroundNode.m */,
+				A6CE3B831C31D2F600B2AA08 /* SCMachineNode.h */,
+				A6CE3B841C31D2F600B2AA08 /* SCMachineNode.m */,
+				A6CE3B8B1C31E76100B2AA08 /* SCProjectileNode.h */,
+				A6CE3B8C1C31E76100B2AA08 /* SCProjectileNode.m */,
+				A6CE3B861C31D32500B2AA08 /* SCCatNode.h */,
+				A6CE3B871C31D32500B2AA08 /* SCCatNode.m */,
+				A618A7311C33DE3F005D5452 /* SCDogNode.h */,
+				A618A7471C387EA5005D5452 /* SCDogNode.m */,
+				A6B4BB191C433559007CC628 /* SCGameOverNode.h */,
+				A6B4BB1A1C433559007CC628 /* SCGameOverNode.m */,
 				A66DC0611C31F81300234E1B /* SCUtil.h */,
 				A66DC0621C31F81300234E1B /* SCUtil.m */,
 				A60D8F681C31643F00B289C6 /* Assets.xcassets */,
 				A6CE3B891C31D50D00B2AA08 /* Sprites.atlas */,
 				A60D8F571C31643F00B289C6 /* Supporting Files */,
+				A618A7381C3853D4005D5452 /* Sounds */,
 			);
 			path = SpaceCat;
 			sourceTree = "<group>";
@@ -235,6 +245,7 @@
 				A618A7481C387EA5005D5452 /* SCDogNode.m in Sources */,
 				A6CE3B7F1C31D27E00B2AA08 /* SCGamePlayScene.m in Sources */,
 				A6CE3B821C31D2A700B2AA08 /* SCTitleScene.m in Sources */,
+				A6B4BB181C4324D9007CC628 /* SCHudNode.m in Sources */,
 				A66DC0631C31F81300234E1B /* SCUtil.m in Sources */,
 				A6CE3B8D1C31E76100B2AA08 /* SCProjectileNode.m in Sources */,
 				A60D8F641C31643F00B289C6 /* GameViewController.m in Sources */,
@@ -242,6 +253,7 @@
 				A618A7331C33DE3F005D5452 /* (null) in Sources */,
 				A60D8F591C31643F00B289C6 /* main.m in Sources */,
 				A6CE3B851C31D2F600B2AA08 /* SCMachineNode.m in Sources */,
+				A6B4BB1B1C433559007CC628 /* SCGameOverNode.m in Sources */,
 				A618A7371C371692005D5452 /* SCGroundNode.m in Sources */,
 				A6CE3B881C31D32500B2AA08 /* SCCatNode.m in Sources */,
 			);

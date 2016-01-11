@@ -6,6 +6,8 @@
 #import "SCProjectileNode.h"
 #import "SCDogNode.h"
 #import "SCGroundNode.h"
+#import "SCHudNode.h"
+#import "SCGameOverNode.h"
 #import "SCUtil.h"
 
 @interface SCGamePlayScene ()
@@ -21,10 +23,16 @@
 
 @property (nonatomic, strong, readwrite)    AVAudioPlayer   *backgroundMusic;
 
+@property (nonatomic, readwrite)    BOOL    gameOver;
+@property (nonatomic, readwrite)    BOOL    restart;
+
 - (void)setupSounds;
 - (void)shootProjectileTowardsPosition:(CGPoint)position;
 - (void)addSpaceDog;
 - (void)debrisAtPosition:(CGPoint)position;
+- (void)addPoints:(NSUInteger)points;
+- (void)loseLife;
+- (void)performGameOver;
 
 @end
 
@@ -42,6 +50,8 @@
         self.addEnemyTimeInterval = 1.5;
         self.totalGameTime = 0;
         self.minSpeed = kSCSpaceDogMinSpeed;
+        self.gameOver = NO;
+        self.restart = NO;
         
         self.physicsWorld.gravity = CGVectorMake(0, -9.8);
         self.physicsWorld.contactDelegate = self;
@@ -51,7 +61,6 @@
         [self addChild:background];
         
         SCGroundNode *ground = [SCGroundNode groundWithSize:CGSizeMake(self.frame.size.width, 22)];
-        ground.zPosition = 0.1;
         [self addChild:ground];
         
         SCMachineNode *machine = [SCMachineNode machineAtPosition:CGPointMake(CGRectGetMidX(self.frame), 12)];
@@ -59,6 +68,9 @@
         
         SCCatNode *spaceCat = [SCCatNode catAtPosition:CGPointMake(machine.position.x, machine.position.y -2)];
         [self addChild:spaceCat];
+        
+        SCHudNode *hud = [SCHudNode hudAtPosition:CGPointMake(0, self.frame.size.height - 20) inFrame:self.frame];
+        [self addChild:hud];
         
         [self setupSounds];
     }
@@ -74,10 +86,15 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    for (UITouch *touch in touches) {
-        CGPoint position = [touch locationInNode:self];
-        [self shootProjectileTowardsPosition:position];
-        [self runAction:self.laserSFX];
+    if (!self.gameOver) {
+        for (UITouch *touch in touches) {
+            CGPoint position = [touch locationInNode:self];
+            [self shootProjectileTowardsPosition:position];
+            [self runAction:self.laserSFX];
+        }
+    } else if (self.restart) {
+        SCGamePlayScene *scene = [SCGamePlayScene sceneWithSize:self.view.bounds.size];
+        [self.view presentScene:scene];
     }
 }
 
@@ -146,6 +163,22 @@
     }
 }
 
+- (void)addPoints:(NSUInteger)points {
+    SCHudNode *hud = (SCHudNode *)[self childNodeWithName:@"HUD"];
+    [hud addPoints:points];
+}
+
+- (void)loseLife {
+    SCHudNode *hud = (SCHudNode *)[self childNodeWithName:@"HUD"];
+    self.gameOver = [hud loseLife];
+}
+
+- (void)performGameOver {
+    SCGameOverNode *gameOver = [SCGameOverNode gameOverAtPosition:CGPointMake(CGRectGetMidX(self.frame),
+                                                                              CGRectGetMidY(self.frame))];
+    [self addChild:gameOver];
+}
+
 #pragma mark -
 #pragma mark RunLoop hooks
 
@@ -178,6 +211,10 @@
         self.addEnemyTimeInterval = 1.00;
         self.minSpeed = -100;
     }
+    
+    if (self.gameOver) {
+        [self performGameOver];
+    }
 }
 
 #pragma mark -
@@ -202,12 +239,16 @@
         [self runAction:self.explodeSFX];
         [spaceDog removeFromParent];
         [projectile removeFromParent];
+        
+        [self addPoints:kSCPointPerHit];
     } else if (SCCollisionCategoryEnemy == firstBody.categoryBitMask &&
                SCCollisionCategoryGround == secondBody.categoryBitMask) {
         SCDogNode *spaceDog = (SCDogNode *)firstBody.node;
         
         [self runAction:self.damageSFX];
         [spaceDog removeFromParent];
+        
+        [self loseLife];
     }
     
     [self debrisAtPosition:contact.contactPoint];

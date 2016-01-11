@@ -16,6 +16,7 @@
     SCGroundNode *ground = [self spriteNodeWithTexture:NULL size:size];
     
     ground.position = CGPointMake(size.width/2, size.height/2);
+    ground.zPosition = 0.1;
     ground.name = @"Ground";
     
     [ground setupPhysicsBody];
